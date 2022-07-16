@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700;800&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="src/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <div class="wrapper">
+        <div class="weather-app">
+          <form id="search-form" class="mb-3">
+            <div class="row">
+              <div class="col-sm-7 form-component">
+                <input
+                  type="search"
+                  placeholder="Enter a city ..."
+                  class="form-control text-center"
+                  id="city-input"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="col-sm-3 form-component">
+                <input
+                  type="submit"
+                  value="Search"
+                  class="btn btn-secondary w-100"
+                />
+              </div>
+              <div class="col-sm-2 form-component">
+                <button
+                  class="btn btn-dark w-100"
+                  id="current-location-button"
+                  title="Current location"
+                >
+                  📍
+                </button>
+              </div>
+            </div>
+          </form>
+          <h1 id="current-city"></h1>
+          <div class="row weather-data">
+            <div class="col-sm-6">
+              <ul>
+                <li id="current-time"></li>
+                <li id="weather-description"></li>
+              </ul>
+            </div>
+            <div class="col-sm-6">
+              <ul>
+                <li class=humidity-wind>Humidity: <span id="humidity"></span>%</li>
+                <li class=humidity-wind>Wind: <span id="wind"></span> </span>kph</li>
+              </ul>
+            </div>
+          </div>
+          <div class="weather-temperature">
+            <span class="current-weather-image">☀ </span>
+            <span class="current-temperature">
+              <span id="temp-value"></span> °<a href="#" id="celsius-link">C</a>
+              | <a href="#" id="fahrenheit-link">F</a>
+            </span>
+          </div>
+          <div class="row text-center">
+            <div class="col xs-4 col-sm-2">
+              <div class="week-day">Mon</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                19° <span class="min-temp">13°</span>
+              </div>
+            </div>
+            <div class="col xs-4 col-sm-2">
+              <div class="week-day">Tue</div>
+              <div class="weather-image">⛅</div>
+              <div class="temperature-range">
+                22° <span class="min-temp">15°</span>
+              </div>
+            </div>
+            <div class="col xs-4 col-sm-2">
+              <div class="week-day">Wed</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                15° <span class="min-temp">9°</span>
+              </div>
+            </div>
+            <div class="col xs-4 col-sm-2">
+              <div class="week-day">Thu</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                16° <span class="min-temp">10°</span>
+              </div>
+            </div>
+            <div class="col xs-4 col-sm-2">
+              <div class="week-day">Fri</div>
+              <div class="weather-image">⛅</div>
+              <div class="temperature-range">
+                17° <span class="min-temp">12°</span>
+              </div>
+            </div>
+            <div class="col xs-4 col-sm-2">
+              <div class="week-day">Sat</div>
+              <div class="weather-image">⛅</div>
+              <div class="temperature-range">
+                16° <span class="min-temp">12°</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <footer>
+      Background image: photo by
+      <a
+        href="https://unsplash.com/@davies_designs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >Davies Designs Studio</a
+      >
+      on
+      <a
+        href="https://unsplash.com/?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
+        >Unsplash</a
+      >
+      <br />This page was built by
+      <a href="https://www.instagram.com/lilac_glue/">Olga Tverdomed</a>
+    </footer>
+    <script src="src/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,98 @@
+ul {
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
+body {
+  background-image: url(https://s3.amazonaws.com/shecodesio-production/uploads/files/000/038/139/original/davies-designs-studio-G-6kwVnClsE-unsplash_med.jpg?1655907686);
+  color: #113f67;
+}
+
+footer {
+  text-align: center;
+}
+
+.wrapper {
+  margin: 30px auto;
+  max-width: 800px;
+}
+
+.weather-app {
+  display: block;
+  margin: 20px auto;
+  padding: 30px;
+  max-width: 600px;
+  border: 1px solid #bcbcbc;
+  border-radius: 10px;
+  background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  font-family: "Lato", sans-serif;
+}
+
+#current-location-button {
+  transition: all 0.2s ease-in-out;
+}
+
+#current-location-button:hover {
+  background: #fff;
+}
+
+.form-component {
+  margin-bottom: 20px;
+}
+
+.weather-temperature {
+  margin: 20px 0;
+}
+
+.current-weather-image {
+  font-size: 56px;
+  color: rgb(247, 167, 49);
+}
+
+.current-temperature {
+  font-size: 26px;
+  position: relative;
+  top: -24px;
+}
+
+.weather-data {
+  margin-top: 5px;
+}
+
+#current-city {
+  font-size: 40px;
+  font-weight: 400;
+}
+
+#current-time,
+#humidity,
+#wind,
+.humidity-wind,
+.temperature-range {
+  font-size: 18px;
+}
+
+#weather-description {
+  font-size: 22px;
+}
+
+.week-day {
+  font-size: 20px;
+}
+
+.weather-image {
+  font-size: 24px;
+}
+
+.temperature-range {
+  font-family: "Assistant", sans-serif;
+  font-weight: 600;
+}
+
+.min-temp {
+  color: #455d80;
+  font-weight: 500;
+}
