@@ -96,3 +96,7 @@ footer {
   color: #455d80;
   font-weight: 500;
 }
+
+.fa-location-dot {
+  color: red;
+}
