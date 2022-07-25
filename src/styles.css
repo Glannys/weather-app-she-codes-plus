@@ -78,6 +78,7 @@ footer {
 
 #weather-description {
   font-size: 22px;
+  text-transform: capitalize;
 }
 
 .week-day {

@@ -42,7 +42,7 @@ function showWeather(response) {
   let wind = Math.round(response.data.wind.speed);
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = wind;
-  let description = response.data.weather[0].main;
+  let description = response.data.weather[0].description;
   let descriptionElement = document.querySelector("#weather-description");
   descriptionElement.innerHTML = description;
 }
