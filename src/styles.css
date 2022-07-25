@@ -33,10 +33,11 @@ footer {
 
 #current-location-button {
   transition: all 0.2s ease-in-out;
+  background: #113f67;
 }
 
 #current-location-button:hover {
-  background: #fff;
+  background: #dfebed;
 }
 
 .form-component {
@@ -98,5 +99,5 @@ footer {
 }
 
 .fa-location-dot {
-  color: red;
+  color: #ec7520;
 }
