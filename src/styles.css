@@ -12,6 +12,13 @@ body {
 
 footer {
   text-align: center;
+  display: block;
+  margin: 150px auto;
+  padding: 10px;
+  max-width: 600px;
+  background: rgb(238, 230, 242);
+  border-radius: 10px;
+  font-size: small;
 }
 
 .wrapper {
