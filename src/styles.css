@@ -33,7 +33,7 @@ footer {
   max-width: 600px;
   border: 1px solid #bcbcbc;
   border-radius: 10px;
-  background: linear-gradient(-20deg, #e9defa 0%, #fbfcdb 100%);
+  background: linear-gradient(to right, #d3cce3, #e9e4f0);
   font-family: "Lato", sans-serif;
 }
 
@@ -54,15 +54,10 @@ footer {
   margin: 20px 0;
 }
 
-.current-weather-image {
-  font-size: 56px;
-  color: rgb(247, 167, 49);
-}
-
 .current-temperature {
   font-size: 26px;
   position: relative;
-  top: -24px;
+  top: -11px;
 }
 
 .weather-data {
