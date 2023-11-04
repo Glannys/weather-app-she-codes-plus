@@ -45,7 +45,7 @@ if (
 } else {
   // If none of the conditions are met, set a default background image
   document.body.style.backgroundImage =
-    "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/102/460/original/johannes-klingebiel-fall.jpg?1698725800')";
+    "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/038/139/original/davies-designs-studio-G-6kwVnClsE-unsplash_med.jpg?1655907686')";
 }
 
 // Function to check if a year is a leap year
@@ -64,9 +64,30 @@ function isLeapYear(year) {
     return false; // Not divisible by 4, it's not a leap year
   }
 }
+//Current weather and date
+function showWeather(response) {
+  let city = response.data.name;
+  let cityElement = document.querySelector("#current-city");
+  cityElement.innerHTML = city;
+  let temperature = Math.round(response.data.main.temp);
+  let tempElement = document.querySelector("#temp-value");
+  tempElement.innerHTML = temperature;
+  let humidity = response.data.main.humidity;
+  let humidityElement = document.querySelector("#humidity");
+  humidityElement.innerHTML = humidity;
+  let wind = Math.round(response.data.wind.speed);
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = wind;
+  let description = response.data.weather[0].description;
+  let descriptionElement = document.querySelector("#weather-description");
+  descriptionElement.innerHTML = description;
+  let date = new Date(response.data.dt * 1000);
+  let timeElement = document.querySelector("#current-time");
+  timeElement.innerHTML = formatDate(date);
+}
 
-//Current date
-function updateDate(date) {
+//Format date
+function formatDate(date) {
   let days = [
     "Sunday",
     "Monday",
@@ -91,29 +112,6 @@ function updateDate(date) {
 
   let dayAndTime = `${currentDay} ${currentHours}:${currentMinutes}`;
   return dayAndTime;
-}
-
-let now = new Date();
-let currentTime = document.querySelector("#current-time");
-currentTime.innerHTML = updateDate(now);
-
-//Current weather
-function showWeather(response) {
-  let city = response.data.name;
-  let cityElement = document.querySelector("#current-city");
-  cityElement.innerHTML = city;
-  let temperature = Math.round(response.data.main.temp);
-  let tempElement = document.querySelector("#temp-value");
-  tempElement.innerHTML = temperature;
-  let humidity = response.data.main.humidity;
-  let humidityElement = document.querySelector("#humidity");
-  humidityElement.innerHTML = humidity;
-  let wind = Math.round(response.data.wind.speed);
-  let windElement = document.querySelector("#wind");
-  windElement.innerHTML = wind;
-  let description = response.data.weather[0].description;
-  let descriptionElement = document.querySelector("#weather-description");
-  descriptionElement.innerHTML = description;
 }
 
 //City search
