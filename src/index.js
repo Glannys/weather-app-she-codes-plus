@@ -84,6 +84,8 @@ function showWeather(response) {
   let date = new Date(response.data.dt * 1000);
   let timeElement = document.querySelector("#current-time");
   timeElement.innerHTML = formatDate(date);
+  let iconElement = document.querySelector("#current-weather-image");
+  iconElement.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" />`;
 }
 
 //Format date
