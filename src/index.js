@@ -69,7 +69,7 @@ function showWeather(response) {
   let city = response.data.name;
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = city;
-  let celsiusTemperature = response.data.main.temp;
+  celsiusTemperature = response.data.main.temp;
   let tempElement = document.querySelector("#temp-value");
   tempElement.innerHTML = Math.round(celsiusTemperature);
   let humidity = response.data.main.humidity;
