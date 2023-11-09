@@ -173,8 +173,8 @@ function showCelsius(event) {
   event.preventDefault();
   let tempElement = document.querySelector("#temp-value");
   tempElement.innerHTML = Math.round(celsiusTemperature);
-  celsiusLink.classList.add("active-unit");
-  fahrenheitLink.classList.remove("active-unit");
+  celsiusLink.classList.add("active");
+  fahrenheitLink.classList.remove("active");
 }
 
 let fahrenheitLink = document.querySelector("#fahrenheit-link");

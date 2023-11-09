@@ -60,6 +60,10 @@ footer {
   top: -11px;
 }
 
+.active {
+  font-weight: bold;
+}
+
 .weather-data {
   margin-top: 5px;
 }
