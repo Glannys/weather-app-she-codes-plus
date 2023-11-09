@@ -69,9 +69,9 @@ function showWeather(response) {
   let city = response.data.name;
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = city;
-  let temperature = Math.round(response.data.main.temp);
+  let celsiusTemperature = response.data.main.temp;
   let tempElement = document.querySelector("#temp-value");
-  tempElement.innerHTML = temperature;
+  tempElement.innerHTML = Math.round(celsiusTemperature);
   let humidity = response.data.main.humidity;
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = humidity;
@@ -157,25 +157,33 @@ function getLocation(event) {
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getLocation);
 
+//Conversion
+function showFahrenheit(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp-value");
+
+  let tempF = Math.round(celsiusTemperature * (9 / 5) + 32);
+  tempElement.innerHTML = tempF;
+
+  fahrenheitLink.classList.add("active");
+  celsiusLink.classList.remove("active");
+}
+
+function showCelsius(event) {
+  event.preventDefault();
+  let tempElement = document.querySelector("#temp-value");
+  tempElement.innerHTML = Math.round(celsiusTemperature);
+  celsiusLink.classList.add("active-unit");
+  fahrenheitLink.classList.remove("active-unit");
+}
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+fahrenheitLink.addEventListener("click", showFahrenheit);
+let celsiusLink = document.querySelector("#celsius-link");
+
+celsiusLink.addEventListener("click", showCelsius);
+
+let celsiusTemperature = null;
+
 //Default city
 searchCity("Kyiv");
-
-/*
-function convertToFahrenheit(event) {
-  event.preventDefault();
-  let tempValue = document.querySelector("#temp-value");
-  tempValue.innerHTML = 63;
-}
-
-function convertToCelsius(event) {
-  event.preventDefault();
-  let tempValue = document.querySelector("#temp-value");
-  tempValue.innerHTML = 17;
-}
-
-let temperatureF = document.querySelector("#fahrenheit-link");
-temperatureF.addEventListener("click", convertToFahrenheit);
-
-let temperatureC = document.querySelector("#celsius-link");
-temperatureC.addEventListener("click", convertToCelsius);
-*/
