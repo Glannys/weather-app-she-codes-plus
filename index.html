@@ -18,9 +18,14 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="src/styles.css" />
-    <script src="https://kit.fontawesome.com/db59d2bac3.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/db59d2bac3.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   </head>
+  <header>Українською</header>
+
   <body>
     <div class="container">
       <div class="wrapper">
@@ -64,30 +69,81 @@
             </div>
             <div class="col-sm-6">
               <ul>
-                <li class=humidity-wind>Humidity: <span id="humidity"></span>%</li>
-                <li class=humidity-wind>Wind: <span id="wind"></span> </span>m/s</li>
+                <li class="humidity-wind">
+                  Humidity: <span id="humidity"></span>%
+                </li>
+                <li class="humidity-wind">Wind: <span id="wind"></span> m/s</li>
               </ul>
             </div>
           </div>
           <div class="weather-temperature">
-           <span id="current-weather-image"
-              >
-            </span>
+            <span id="current-weather-image"> </span>
             <span class="current-temperature">
               <span id="temp-value"></span> °<a href="#" id="celsius-link">C</a>
               | <a href="#" id="fahrenheit-link">F</a>
             </span>
           </div>
-          <!--
+
+          <div class="weather-forecast">
+            <div class="weather-forecast-day">
+              <div class="week-day">Mon</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                <div class="max-temp">15º</div>
+                <div class="min-temp">9º</div>
+              </div>
+            </div>
+            <div class="weather-forecast-day">
+              <div class="week-day">Mon</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                <div class="max-temp">15º</div>
+                <div class="min-temp">9º</div>
+              </div>
+            </div>
+            <div class="weather-forecast-day">
+              <div class="week-day">Mon</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                <div class="max-temp">15º</div>
+                <div class="min-temp">9º</div>
+              </div>
+            </div>
+            <div class="weather-forecast-day">
+              <div class="week-day">Mon</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                <div class="max-temp">15º</div>
+                <div class="min-temp">9º</div>
+              </div>
+            </div>
+            <div class="weather-forecast-day">
+              <div class="week-day">Mon</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                <div class="max-temp">15º</div>
+                <div class="min-temp">9º</div>
+              </div>
+            </div>
+            <div class="weather-forecast-day">
+              <div class="week-day">Mon</div>
+              <div class="weather-image">☁</div>
+              <div class="temperature-range">
+                <div class="max-temp">15º</div>
+                <div class="min-temp">9º</div>
+              </div>
+            </div>
+            <!--
           <div class="row text-center">
             <div class="col xs-4 col-sm-2">
               <div class="week-day">Mon</div>
               <div class="weather-image">☁</div>
               <div class="temperature-range">
-                19° <span class="min-temp">13°</span>
+                <span class="max-temp">19°</span>
+                <span class="min-temp">13°</span>
               </div>
             </div>
-            <div class="col xs-4 col-sm-2">
+              <div class="col xs-4 col-sm-2">
               <div class="week-day">Tue</div>
               <div class="weather-image">⛅</div>
               <div class="temperature-range">
@@ -122,30 +178,35 @@
                 16° <span class="min-temp">12°</span>
               </div>
             </div>
-          </div>
            -->
+          </div>
         </div>
       </div>
     </div>
-        <footer>
+    <footer>
       Background image: photo by
       <a
         href="https://unsplash.com/@davies_designs?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText"
         target="_blank"
         >Davies Designs Studio (default)</a
-      >,   <a
+      >,
+      <a
         href="https://unsplash.com/@frankiefoto?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
         target="_blank"
         >frank mckenna (summer)</a
-      >, <a
+      >,
+      <a
         href="https://unsplash.com/@johnprice?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
         target="_blank"
         >John Price (spring)</a
-      >, <a
+      >,
+      <a
         href="https://unsplash.com/@jaanus?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
         target="_blank"
         >Jaanus Jagomägi (winter)</a
-      > and <a
+      >
+      and
+      <a
         href="https://unsplash.com/@klingebeil?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash"
         target="_blank"
         >Johannes Klingebiel (fall)</a
@@ -156,20 +217,16 @@
         target="_blank"
         >Unsplash</a
       >
-      <br />This project was coded by <a
-        href="https://github.com/Glannys/"
-        target="_blank"
-        >Olga Tverdomed</a
-      >, is
+      <br />This project was coded by
+      <a href="https://github.com/Glannys/" target="_blank">Olga Tverdomed</a>,
+      is
       <a
         href="https://github.com/Glannys/weather-app-she-codes-plus"
         target="_blank"
         >open-sourced on GitHub</a
-      > and hosted on <a
-        href="https://olga-weather.netlify.app"
-        target="_blank"
-        >Netlify</a
       >
+      and hosted on
+      <a href="https://olga-weather.netlify.app" target="_blank">Netlify</a>
     </footer>
     <script src="src/index.js"></script>
   </body>
