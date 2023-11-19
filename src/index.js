@@ -187,3 +187,30 @@ let celsiusTemperature = null;
 
 //Default city
 searchCity("Kyiv");
+
+//Forecast
+
+function showForecast() {
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  let forecastHtml = "";
+
+  days.forEach(function (day) {
+    forecastHtml =
+      forecastHtml +
+      `
+      <div class="weather-forecast-day">
+        <div class="week-day">${day}</div>
+        <div class="weather-image">☁</div>
+        <div class="temperature-range">
+          <div class="max-temp">15º</div>
+          <div class="min-temp">9º</div>
+        </div>
+      </div>
+    `;
+  });
+
+  let forecastElement = document.querySelector("#forecast");
+  forecastElement.innerHTML = forecastHtml;
+}
+
+showForecast();
