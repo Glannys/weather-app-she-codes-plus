@@ -66,26 +66,28 @@ function isLeapYear(year) {
 }
 //Current weather and date
 function showWeather(response) {
-  let city = response.data.name;
+  let city = response.data.city;
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = city;
-  celsiusTemperature = response.data.main.temp;
+  celsiusTemperature = response.data.temperature.current;
   let tempElement = document.querySelector("#temp-value");
   tempElement.innerHTML = Math.round(celsiusTemperature);
-  let humidity = response.data.main.humidity;
+  let humidity = response.data.temperature.humidity;
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = humidity;
   let wind = Math.round(response.data.wind.speed);
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = wind;
-  let description = response.data.weather[0].description;
+  let description = response.data.condition.description;
   let descriptionElement = document.querySelector("#weather-description");
   descriptionElement.innerHTML = description;
-  let date = new Date(response.data.dt * 1000);
+  let date = new Date(response.data.time * 1000);
   let timeElement = document.querySelector("#current-time");
   timeElement.innerHTML = formatDate(date);
   let iconElement = document.querySelector("#current-weather-image");
-  iconElement.innerHTML = `<img src="https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png" />`;
+  iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" />`;
+
+  getForecast(response.data.city);
 }
 
 //Format date
@@ -118,9 +120,9 @@ function formatDate(date) {
 
 //City search
 function searchCity(city) {
-  let apiKey = "a5cafaaafa9457566a6cc6457f4d0422";
+  let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
   let units = "metric";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${units}`;
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
   console.log(apiUrl);
   axios.get(apiUrl).then(showWeather);
 }
@@ -139,14 +141,15 @@ function handleSubmit(event) {
 let searchForm = document.querySelector("#search-form");
 searchForm.addEventListener("submit", handleSubmit);
 
-//Geolocation
+//Geolocation, current weather
 function determinePosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
   let units = "metric";
-  let apiKey = "a5cafaaafa9457566a6cc6457f4d0422";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${units}`;
+  let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
+  console.log(apiUrl);
 }
 
 function getLocation(event) {
@@ -185,13 +188,18 @@ celsiusLink.addEventListener("click", showCelsius);
 
 let celsiusTemperature = null;
 
-//Default city
-searchCity("Kyiv");
-
 //Forecast
+function getForecast(city) {
+  let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
+  let units = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
+  axios.get(apiUrl).then(showForecast);
+}
 
-function showForecast() {
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+function showForecast(response) {
+  console.log(response.data);
+
+  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
   days.forEach(function (day) {
@@ -213,4 +221,24 @@ function showForecast() {
   forecastElement.innerHTML = forecastHtml;
 }
 
-showForecast();
+/*
+
+function testApi() {
+  let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
+  let city = "Malmo";
+  let units = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
+  console.log(apiUrl);
+}
+
+function testForecastApi() {
+  let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
+  let city = "Malmo";
+  let units = "metric";
+  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
+  console.log(apiUrl);
+}
+*/
+
+//Run functions
+searchCity("Kyiv");
