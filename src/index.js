@@ -69,21 +69,27 @@ function showWeather(response) {
   let city = response.data.city;
   let cityElement = document.querySelector("#current-city");
   cityElement.innerHTML = city;
+
   celsiusTemperature = response.data.temperature.current;
   let tempElement = document.querySelector("#temp-value");
   tempElement.innerHTML = Math.round(celsiusTemperature);
+
   let humidity = response.data.temperature.humidity;
   let humidityElement = document.querySelector("#humidity");
   humidityElement.innerHTML = humidity;
+
   let wind = Math.round(response.data.wind.speed);
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = wind;
+
   let description = response.data.condition.description;
   let descriptionElement = document.querySelector("#weather-description");
   descriptionElement.innerHTML = description;
+
   let date = new Date(response.data.time * 1000);
   let timeElement = document.querySelector("#current-time");
   timeElement.innerHTML = formatDate(date);
+
   let iconElement = document.querySelector("#current-weather-image");
   iconElement.innerHTML = `<img src="${response.data.condition.icon_url}" />`;
 
@@ -123,7 +129,7 @@ function searchCity(city) {
   let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
   let units = "metric";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-  console.log(apiUrl);
+
   axios.get(apiUrl).then(showWeather);
 }
 
@@ -149,7 +155,6 @@ function determinePosition(position) {
   let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
   let apiUrl = `https://api.shecodes.io/weather/v1/current?lon=${longitude}&lat=${latitude}&key=${apiKey}&units=${units}`;
   axios.get(apiUrl).then(showWeather);
-  console.log(apiUrl);
 }
 
 function getLocation(event) {
@@ -183,12 +188,18 @@ function showCelsius(event) {
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 fahrenheitLink.addEventListener("click", showFahrenheit);
 let celsiusLink = document.querySelector("#celsius-link");
-
 celsiusLink.addEventListener("click", showCelsius);
 
 let celsiusTemperature = null;
 
 //Forecast
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[date.getDay()];
+}
+
 function getForecast(city) {
   let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
   let units = "metric";
@@ -197,48 +208,28 @@ function getForecast(city) {
 }
 
 function showForecast(response) {
-  console.log(response.data);
-
-  let days = ["Mon", "Tue", "Wed", "Thu", "Fri"];
   let forecastHtml = "";
 
-  days.forEach(function (day) {
-    forecastHtml =
-      forecastHtml +
-      `
+  response.data.daily.forEach(function (day, index) {
+    if (index < 5) {
+      forecastHtml =
+        forecastHtml +
+        `
       <div class="weather-forecast-day">
-        <div class="week-day">${day}</div>
-        <div class="weather-image">☁</div>
+        <div class="week-day">${formatDay(day.time)}</div>
+        <img src="${day.condition.icon_url}" class="weather-image" />
         <div class="temperature-range">
-          <div class="max-temp">15º</div>
-          <div class="min-temp">9º</div>
+          <div class="max-temp">${Math.round(day.temperature.maximum)}°</div>
+          <div class="min-temp">${Math.round(day.temperature.minimum)}°</div>
         </div>
       </div>
     `;
+    }
   });
 
   let forecastElement = document.querySelector("#forecast");
   forecastElement.innerHTML = forecastHtml;
 }
-
-/*
-
-function testApi() {
-  let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
-  let city = "Malmo";
-  let units = "metric";
-  let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=${units}`;
-  console.log(apiUrl);
-}
-
-function testForecastApi() {
-  let apiKey = "bf7b6c4oac467723a2fta09fb7854411";
-  let city = "Malmo";
-  let units = "metric";
-  let apiUrl = `https://api.shecodes.io/weather/v1/forecast?query=${city}&key=${apiKey}&units=${units}`;
-  console.log(apiUrl);
-}
-*/
 
 //Run functions
 searchCity("Kyiv");
