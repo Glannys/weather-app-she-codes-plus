@@ -18,7 +18,9 @@ const summerStartDate = new Date(currentDate.getFullYear(), 5, 1); // Jun 1
 const summerEndDate = new Date(currentDate.getFullYear(), 7, 31); // Aug 31
 
 const fallStartDate = new Date(currentDate.getFullYear(), 8, 1); // Sep 1
-const fallEndDate = new Date(currentDate.getFullYear(), 10, 30); // Nov 30
+const fallEndDate = new Date(currentDate.getFullYear(), 11, 1); // Nov 30
+
+console.log(new Date(currentDate.getFullYear(), 11, 1));
 
 // Check if the current date is within a season
 if (
