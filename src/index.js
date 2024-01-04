@@ -3,32 +3,74 @@
 // Get the current date
 const currentDate = new Date();
 
+console.log("Current Date:", currentDate);
+
 // Get the month (0-11) and day (1-31) of the current date
 const currentMonth = currentDate.getMonth();
 const currentDay = currentDate.getDate();
 
-// Define the start and end dates for each season
-const winterStartDate = new Date(currentDate.getFullYear(), 11, 1); // Dec 1
-const winterEndDate = new Date(currentDate.getFullYear() + 1, 1, 29); // Feb 28/29
+let winterStartYear, winterEndYear;
+
+// Check if the current month is January or February
+if (currentMonth === 0 || currentMonth === 1) {
+  // Winter started last December and ends this February
+  winterStartYear = currentDate.getFullYear() - 1;
+  winterEndYear = currentDate.getFullYear();
+} else {
+  // Winter starts this December and ends next February
+  winterStartYear = currentDate.getFullYear();
+  winterEndYear = currentDate.getFullYear() + 1;
+}
+
+const winterStartDate = new Date(winterStartYear, 11, 1); // Dec 1 of the correct year
+const winterEndDate = new Date(
+  winterEndYear,
+  1,
+  isLeapYear(winterEndYear) ? 29 : 28
+); // Feb 28/29 of the correct year
+
+console.log(
+  "Winter Start Date:",
+  winterStartDate,
+  "Winter End Date:",
+  winterEndDate
+);
 
 const springStartDate = new Date(currentDate.getFullYear(), 2, 1); // Mar 1
 const springEndDate = new Date(currentDate.getFullYear(), 4, 31); // May 31
 
+console.log(
+  "Spring Start Date:",
+  springStartDate,
+  "Spring End Date:",
+  springEndDate
+);
+
 const summerStartDate = new Date(currentDate.getFullYear(), 5, 1); // Jun 1
 const summerEndDate = new Date(currentDate.getFullYear(), 7, 31); // Aug 31
+
+console.log(
+  "Summer Start Date:",
+  summerStartDate,
+  "Summer End Date:",
+  summerEndDate
+);
 
 const fallStartDate = new Date(currentDate.getFullYear(), 8, 1); // Sep 1
 const fallEndDate = new Date(currentDate.getFullYear(), 11, 1); // Nov 30
 
+console.log(
+  "Fall Start Date:",
+  fallStartDate,
+  "Fall End Date:",
+  fallEndDate
+);
+
 console.log(new Date(currentDate.getFullYear(), 11, 1));
 
 // Check if the current date is within a season
-if (
-  (currentDate >= winterStartDate && currentDate <= winterEndDate) ||
-  (currentDate >= winterStartDate &&
-    currentDate <= winterEndDate &&
-    isLeapYear(currentDate.getFullYear()))
-) {
+
+if (currentDate >= winterStartDate && currentDate <= winterEndDate) {
   // Set the background image for winter
   document.body.style.backgroundImage =
     "url('https://s3.amazonaws.com/shecodesio-production/uploads/files/000/102/459/original/jaanus-jagomagi-winter.jpg?1698723962')";
