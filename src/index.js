@@ -23,11 +23,12 @@ if (currentMonth === 0 || currentMonth === 1) {
 }
 
 const winterStartDate = new Date(winterStartYear, 11, 1); // Dec 1 of the correct year
-const winterEndDate = new Date(
-  winterEndYear,
-  1,
-  isLeapYear(winterEndYear) ? 29 : 28
-); // Feb 28/29 of the correct year
+const winterEndDate = new Date(currentDate.getFullYear(), 2, 1);
+// const winterEndDate = new Date(
+//   winterEndYear,
+//   1,
+//   isLeapYear(winterEndYear) ? 29 : 28
+// ); // Feb 28/29 of the correct year
 
 console.log(
   "Winter Start Date:",
@@ -59,12 +60,7 @@ console.log(
 const fallStartDate = new Date(currentDate.getFullYear(), 8, 1); // Sep 1
 const fallEndDate = new Date(currentDate.getFullYear(), 11, 1); // Nov 30
 
-console.log(
-  "Fall Start Date:",
-  fallStartDate,
-  "Fall End Date:",
-  fallEndDate
-);
+console.log("Fall Start Date:", fallStartDate, "Fall End Date:", fallEndDate);
 
 console.log(new Date(currentDate.getFullYear(), 11, 1));
 
